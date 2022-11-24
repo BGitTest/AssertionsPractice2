@@ -1,5 +1,6 @@
 package org.example;
 
+import org.openqa.selenium.Alert;
 import org.testng.annotations.Test;
 
 public class TestSuit extends BaseTest {
@@ -8,9 +9,8 @@ public class TestSuit extends BaseTest {
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationResultPage registrationResultPage = new RegistrationResultPage();
     NopCommerceNewsRelease nopCommerceNewsRelease = new NopCommerceNewsRelease();
-   // NewCommentPage newCommentPage = new NewCommentPage();
+    // NewCommentPage newCommentPage = new NewCommentPage();
     FaceBook faceBook = new FaceBook();
-
 
 
     @Test
@@ -22,24 +22,23 @@ public class TestSuit extends BaseTest {
         registrationPage.verifyUserIsAbleToClickOnRegisterButton();
     }
 
-   @Test
-   public void newsReleaseComment()
-   {
-           homePage.clickOnNopCommerceNewReleaseDetailsButton();
-           nopCommerceNewsRelease.enterYourComment();
-           nopCommerceNewsRelease.verifyDisplayedMsgWithEnteredMsg();
+    @Test
+    public void newsReleaseComment() {
+        homePage.clickOnNopCommerceNewReleaseDetailsButton();
+        nopCommerceNewsRelease.enterYourComment();
+        nopCommerceNewsRelease.verifyDisplayedMsgWithEnteredMsg();
 
-       }
+    }
 
-       //nopCommerceNewsRelease.verifyUserIsAbleToClickOnNewCommentButton();
+    @Test
+    public void faceBookVerifyURLOpenInNextPage() {
 
-   }
+        homePage.clickOnFacebookLogo();
+        faceBook.switchToChildWindowToParent();
+    }
 
-  // @Test
-   // public void faceBookVerifyURLOpenInNextPage()
-//   {
-//       //faceBook.faceBookButton();
-//   }
-//
-//}
-////
+    @Test
+    public void voteButtonHandlePopUpAlert() {
+        homePage.acceptIfPopUpAlertIsPresent();
+    }
+}
